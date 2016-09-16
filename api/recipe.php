@@ -1,6 +1,7 @@
 <?php namespace api;
 
 require_once 'paths.php';
+require_once 'list.php';
 
 function get_recipe($userid, $recipeid) {
  	 $resolver = new \paths\Resolver($userid);
@@ -24,8 +25,6 @@ function put_recipe($userid, $recipeid, $data) {
 
 	 file_put_contents($recipefile, $data);
 
-#	 return "/usr/bin/git --git-dir " . $resolver->recipedir($recipeid) . " add " . $recipefile;
-
 	 $error = exec("/usr/bin/git --git-dir " . $git_dir . " add " . $recipefile . " 2>&1", $output, $return_var);
 	 if (0 != $return_var) {
 	    return $error;
@@ -36,5 +35,24 @@ function put_recipe($userid, $recipeid, $data) {
 	    return $error;
          }
 }
+
+
+function list_all_recipes() {
+	 $recipes = array();
+	 $ur = new \paths\UserResolver();
+
+	 foreach ($ur->allusers() as $userid) {
+	     $r = new \paths\Resolver($userid);
+
+	     foreach (\api\list_recipes($userid) as $recipe_id => $meta) {
+	     	     $recipes[] = get_recipe($userid, $recipe_id);
+	     }
+
+	 }
+
+	 return $recipes;
+}
+
+
 
 ?>

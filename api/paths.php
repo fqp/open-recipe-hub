@@ -1,5 +1,23 @@
 <?php namespace paths;
 
+
+class UserResolver {
+      function __construct() {
+      	       $this->root = $_SERVER["DOCUMENT_ROOT"];
+      }
+
+      function allusers() {
+      	       $allusers = array();
+	       foreach (scandir($this->root . "/data") as $userdir) {
+	       	       if ("." != $userdir && ".." != $userdir && "dummy" != $userdir) {
+		       	  $allusers[] = $userdir;
+		       }
+	       }
+
+	       return $allusers;
+      }
+}
+
 class Resolver {
       function __construct($userid) {
       	       $this->userid = $userid;

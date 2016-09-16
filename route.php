@@ -80,6 +80,11 @@ Flight::route('PUT /user/@userid:[0-9]+/recipe/@recipeid:[0-9]+', function($user
     }
 });
 
+Flight::route('GET /allthethings', function() {
+    header("Access-Control-Allow-Origin: *");
+    return Flight::json(api\list_all_recipes());
+});
+
 
 Flight::start();
 ?>
