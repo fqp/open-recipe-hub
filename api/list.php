@@ -1,6 +1,6 @@
 <?php namespace api;
 
-include 'paths.php';
+require_once 'paths.php';
 
 function list_recipes($userid) {
 	 $r = new \paths\Resolver($userid);
