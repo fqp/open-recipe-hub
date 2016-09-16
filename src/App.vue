@@ -6,7 +6,7 @@
       <strong>Well Done!</strong>
       <p>You successfully read this important alert message.</p>
     </alert>
-    <router-view></router-view>
+    <router-view :recipes="recipes"></router-view>
   </div>
 </template>
 
@@ -19,9 +19,22 @@ export default {
     HeaderBar,
     alert
   },
+  ready () {
+    this.$http.post('/user/new/1').then((response) => {
+      console.log(response)
+    }, (response) => {
+      console.log('boo!')
+    })
+    this.$http.get('/user/1').then((response) => {
+      console.log(response)
+    }, (response) => {
+      console.log('boo!')
+    })
+  },
   data () {
     return {
-      showRight: false
+      showRight: false,
+      recipes: []
     }
   },
   methods: {
