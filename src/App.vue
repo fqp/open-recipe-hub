@@ -40,4 +40,8 @@ export default {
   box-sizing: border-box;
   outline: 0;
 }
+
+html, #app {
+  background-color: darken(white, 10%);
+}
 </style>

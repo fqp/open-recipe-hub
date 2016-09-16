@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import _ from 'lodash'
 import App from './App'
 
 // import views
@@ -9,6 +10,11 @@ import RecipeView from './components/Recipe'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+
+// Custom filters
+Vue.filter('chunk', function (value, size) {
+  return _.chunk(value, size)
+})
 
 export var router = new VueRouter()
 
