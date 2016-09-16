@@ -20,13 +20,13 @@ export default {
     alert
   },
   ready () {
-    this.$http.post('/user/new/1').then((response) => {
+    this.$http.post('http://37.139.9.54:80/user/new/3').then((response) => {
       console.log(response)
-    }, (response) => {
-      console.log('boo!')
-    })
-    this.$http.get('/user/1').then((response) => {
-      console.log(response)
+      this.$http.get('http://37.139.9.54:80/user/3').then((response) => {
+        console.log(response)
+      }, (response) => {
+        console.log('boo!')
+      })
     }, (response) => {
       console.log('boo!')
     })
