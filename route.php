@@ -32,10 +32,11 @@ Flight::route('POST /user/new/@userid:[0-9]+', function($userid) {
         Flight::json(array("error" => "security"));
     }
 
-    if (api\new_user($userid)) {
+    $new_msg = api\new_user($userid);
+    if ($new_msg === true) {
         return Flight::json(array("user_id" => $userid));
     } else {
-        return Flight::json(array("error" => "error"));
+        return Flight::json(array("error" => $new_msg));
     }
 });
 
@@ -49,6 +50,21 @@ Flight::route('POST /user/@userid:[0-9]+/fork/@anotheruserid:[0-9]+/recipes/@rec
         return Flight::json(array("user_id" => $userid, "recipe_id" => $recipeid));
     } else {
         return Flight::json(array("error" => "error"));
+    }
+});
+
+Flight::route('PUT /user/@userid:[0-9]+/recipe/@recipeid:[0-9]+', function($userid, $recipeid) {
+    if (!api\security_can_modify($userid)) {
+       Flight::json(array("error" => "security"));
+    }
+
+    $data = file_get_contents("php://input");
+
+    $error = api\put_recipe($userid, $recipeid, $data);
+    if ($error === true) {
+       return Flight::json(array("success" => true ));
+    } else {
+      return Flight::json(array("error" => $error));
     }
 });
 

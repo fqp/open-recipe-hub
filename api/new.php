@@ -19,9 +19,15 @@ function new_recipe($userid, $recipeid) {
 function new_user($userid) {
 	 $resolver = new \paths\Resolver($userid);
 
-	 if (0 != exec("mkdir " . $resolver->userdir())) {
-	    return false;
+
+	 $output = [];
+	 $return_var = 0;
+	 $error = exec("mkdir " . $resolver->userdir());
+
+	 if (0 != $return_var) {
+	    return $error;
 	 }
+	 exec("chmod go+rw " . $resolver->userdir());
 
 	 return true;
 }
