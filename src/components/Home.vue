@@ -15,41 +15,8 @@ export default {
   components: {
     RecipeBlock
   },
-  data () {
-    return {
-      recipes: [
-        {
-          id: 1,
-          title: 'Recipe 1',
-          author: 'Wesley',
-          tags: ['Italian', 'Mediterranean']
-        },
-        {
-          id: 2,
-          title: 'Recipe 2',
-          author: 'Freek',
-          tags: ['Japanese']
-        },
-        {
-          id: 3,
-          title: 'Recipe 3',
-          author: 'Michiel',
-          tags: ['Chinese']
-        },
-        {
-          id: 4,
-          title: 'Recipe 4',
-          author: 'Wesley',
-          tags: ['Indian']
-        },
-        {
-          id: 5,
-          title: 'Recipe 5',
-          author: 'Freek',
-          tags: ['Italian']
-        }
-      ]
-    }
+  props: {
+    recipes: Array
   }
 }
 </script>
