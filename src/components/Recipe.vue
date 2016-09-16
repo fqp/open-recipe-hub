@@ -1,24 +1,22 @@
 <template>
   <div class="container-fluid">
     <div class="row recipe-image">
-      <h1 class="title">{{ recipe.title }}</h1>
+      <h1 class="title">Title goes here...</h1>
     </div>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         <div class="content">
-          Ingredients
+          <ul>
+            <li v-for="ingredient in recipe.meta.ingredients">
+              {{ ingredient.ingredient }}
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-md-8">
-        <div class="content">
-          {{ recipe.text }}
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="content">
-          Related
+        <div v-html="recipe.data | marked" class="content">
         </div>
       </div>
     </div>
@@ -26,7 +24,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+// import _ from 'lodash'
 
 export default {
   props: {
@@ -35,12 +33,7 @@ export default {
   computed: {
     recipe: function () {
       var self = this
-
-      var i = _.find(this.recipes, function (recipe) {
-        return recipe.id === Number(self.$route.params.recipeId)
-      })
-
-      return i
+      return this.recipes[self.$route.params.recipeId]
     }
   }
 }

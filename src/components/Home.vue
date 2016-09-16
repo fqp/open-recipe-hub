@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row" v-for="row in recipes | chunk 4">
-      <div v-for="recipe in row" class="col-md-3 top-margin" v-link="{name: 'recipe', params: { recipeId: recipe.id }}">
+      <div v-for="recipe in row" class="col-md-3 top-margin" v-link="{name: 'recipe', params: { recipeId: 2 }}">
         <recipe-block class="content" :recipe="recipe"></recipe-block>
       </div>
     </div>

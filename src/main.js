@@ -16,6 +16,10 @@ Vue.filter('chunk', function (value, size) {
   return _.chunk(value, size)
 })
 
+Vue.filter('marked', function (value) {
+  return window.marked(value)
+})
+
 export var router = new VueRouter()
 
 router.map({
