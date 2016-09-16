@@ -1,10 +1,26 @@
 <template>
   <div class="container-fluid">
-    <div class="row recipe-image">{{ recipes[$route.params.recipeId].title }}</div>
+    <div class="row recipe-image">
+      <h1 class="title">{{ recipe.title }}</h1>
+    </div>
   </div>
   <div class="container">
     <div class="row">
-      {{ recipe.title }}
+      <div class="col-md-2">
+        <div class="content">
+          Ingredients
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="content">
+          {{ recipe.text }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="content">
+          Related
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,5 +52,16 @@ export default {
   height: 250px;
   background-position: center center;
   background-size: cover;
+  display: flex;
+  margin-bottom: 30px;
+  .title {
+    text-align: center;
+    width: 100%;
+    align-self: flex-end;
+  }
+}
+.content {
+  background-color: white;
+  padding: 20px;
 }
 </style>
