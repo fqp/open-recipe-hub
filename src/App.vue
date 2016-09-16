@@ -6,9 +6,6 @@
       <strong>Well Done!</strong>
       <p>You successfully read this important alert message.</p>
     </alert>
-    <button @click="showAlert">Show</button>
-    <a v-link="{ path: '/home' }">Home</a>
-    <a v-link="{ path: '/recipe' }">Recipe</a>
     <router-view></router-view>
   </div>
 </template>

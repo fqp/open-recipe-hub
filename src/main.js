@@ -22,7 +22,8 @@ router.map({
   '/home': {
     component: HomeView
   },
-  '/recipe': {
+  '/recipe/:recipeId': {
+    name: 'recipe',
     component: RecipeView
   }
 })

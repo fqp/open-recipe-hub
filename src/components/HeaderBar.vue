@@ -1,5 +1,9 @@
 <template>
   <div class="header">
+    <nav>
+      <a v-link="{ path: '/home' }">Home</a>
+    </nav>
+
     <input type="text" class="search" placeholder="Search recipes" />
   </div>
 </template>
@@ -15,6 +19,14 @@ export default {
   background-color: #009fff;
   padding: 10px;
   text-align: center;
+  nav {
+    position: absolute;
+    line-height: 44px;
+    a {
+      color: #fff;
+    }
+  }
+
   .search {
     padding: 10px;
     border-radius: 2px;
